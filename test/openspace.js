@@ -76,6 +76,12 @@ test('openspace: open file that exist', (t) => {
                 t.end();
                 callback();
             });
+            
+            socket.on('err', (error) => {
+                t.notOk(error, 'should not be open error');
+                t.end();
+                callback();
+            });
         });
     });
 });

@@ -7,6 +7,7 @@
     "test": "tape test/**/*.js",
     "watch:test": "nodemon -w test -w lib --exec npm test",
     "lint": "redrun lint:*",
+    "lint-parallel": "npm run lint:jscs & npm run lint:eslint:client",
     "lint:jshint:client": "jshint --config .jshintrc-client lib/client.js",
     "lint:jshint:server": "jshint lib test --exclude lib/client.js",
     "lint:eslint:client": "eslint --config .eslintrc-client lib --ignore-pattern lib/server",
