@@ -5,6 +5,7 @@
   "main": "lib/server.js",
   "scripts": {
     "test": "tape test/**/*.js",
+    "watch:test": "nodemon -w test -w lib --exec npm test",
     "bower": "bower"
   },
   "repository": {
@@ -35,10 +36,11 @@
   },
   "devDependencies": {
     "bower": "^1.6.9",
-    "express": "~4.13.4",
-    "freeport": "~1.0.5",
-    "socket.io": "~1.4.5",
-    "socket.io-client": "~1.4.5",
-    "tape": "~4.5.1"
+    "express": "^4.13.4",
+    "freeport": "^1.0.5",
+    "nodemon": "^1.9.1",
+    "socket.io": "^1.4.5",
+    "socket.io-client": "^1.4.5",
+    "tape": "^4.5.1"
   }
 }
