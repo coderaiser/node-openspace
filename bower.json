@@ -1,12 +1,12 @@
 {
-  "name": "ishtar",
+  "name": "openspace",
   "version": "1.3.1",
-  "homepage": "https://github.com/coderaiser/node-ishtar",
+  "homepage": "https://github.com/coderaiser/node-openspace",
   "authors": [
     "coderaiser <mnemonic.enemy@gmail.com>"
   ],
   "description": "pack and extract .tar.gz archives middleware",
-  "main": "lib/ishtar.js",
+  "main": "lib/openspace.js",
   "keywords": [
     "pack",
     "extract",
