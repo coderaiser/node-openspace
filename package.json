@@ -6,6 +6,12 @@
   "scripts": {
     "test": "tape test/**/*.js",
     "watch:test": "nodemon -w test -w lib --exec npm test",
+    "lint": "redrun lint:*",
+    "lint:jshint:client": "jshint --config .jshintrc-client lib/client.js",
+    "lint:jshint:server": "jshint lib test --exclude lib/client.js",
+    "lint:eslint:client": "eslint --config .eslintrc-client lib --ignore-pattern lib/server",
+    "lint:eslint-server": "eslint lib test --ignore-pattern lib/client.js",
+    "lint:jscs": "jscs --esnext bin lib",
     "bower": "bower"
   },
   "repository": {
@@ -32,9 +38,13 @@
   },
   "devDependencies": {
     "bower": "^1.6.9",
+    "eslint": "~2.8.0",
     "express": "^4.13.4",
     "freeport": "^1.0.5",
+    "jscs": "~3.0.3",
+    "jshint": "~2.9.2",
     "nodemon": "^1.9.1",
+    "redrun": "^1.0.0",
     "socket.io": "^1.4.5",
     "socket.io-client": "^1.4.5",
     "tape": "^4.5.1"

@@ -5,7 +5,6 @@ let path = require('path');
 let express = require('express');
 let test = require('tape');
 let freeport = require('freeport');
-let pipe = require('pipe-io');
 let io = require('socket.io');
 let ioClient = require('socket.io-client');
 let openspace = require('..');
@@ -63,7 +62,7 @@ test('openspace: open file that doesn\'t exist', (t) => {
                 t.end();
                 callback();
             });
-        })
+        });
     });
 });
 
@@ -77,7 +76,7 @@ test('openspace: open file that exist', (t) => {
                 t.end();
                 callback();
             });
-        })
+        });
     });
 });
 
@@ -91,7 +90,7 @@ test('openspace: options: prefix', (t) => {
                 t.end();
                 callback();
             });
-        })
+        });
     });
 });
 
@@ -105,7 +104,7 @@ test('openspace: options: root', (t) => {
                 t.end();
                 callback();
             });
-        })
+        });
     });
 });
 
@@ -118,7 +117,7 @@ test('openspace: options: empty object', (t) => {
                 t.end();
                 callback();
             });
-        })
+        });
     });
 });
 
@@ -140,7 +139,7 @@ test('openspace: options: authCheck: wrong credentials', (t) => {
                 fn();
             else
                 socket.emit('err', 'Wrong credentials');
-        })
+        });
     };
     
     connect('/', {authCheck}, (socket, fn) => {
@@ -161,7 +160,7 @@ test('openspace: options: authCheck: correct credentials', (t) => {
                 fn();
             else
                 socket.emit('err', 'Wrong credentials');
-        })
+        });
     };
     
     connect('/', {authCheck}, (socket, fn) => {
