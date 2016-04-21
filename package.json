@@ -4,6 +4,7 @@
   "description": "pack and extract .tar.gz archives middleware",
   "main": "lib/server.js",
   "scripts": {
+    "test": "tape test/**/*.js",
     "bower": "bower"
   },
   "repository": {
@@ -30,9 +31,14 @@
     "join-io": "~1.4.0",
     "mellow": "~2.0.0",
     "mollify": "~1.0.4",
-    "open": "0.0.5"
+    "opn": "~4.0.1"
   },
   "devDependencies": {
-    "bower": "^1.6.9"
+    "bower": "^1.6.9",
+    "express": "~4.13.4",
+    "freeport": "~1.0.5",
+    "socket.io": "~1.4.5",
+    "socket.io-client": "~1.4.5",
+    "tape": "~4.5.1"
   }
 }
