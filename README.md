@@ -1,4 +1,4 @@
-# Openspace [![License][LicenseIMGURL]][LicenseURL] [![NPM version][NPMIMGURL]][NPMURL] [![Dependency Status][DependencyStatusIMGURL]][DependencyStatusURL]
+# Openspace [![License][LicenseIMGURL]][LicenseURL] [![NPM version][NPMIMGURL]][NPMURL] [![Dependency Status][DependencyStatusIMGURL]][DependencyStatusURL] [![Build Status][BuildStatusIMGURL]][BuildStatusURL]
 
 Open files, web sites, executables via web sockets middleware.
 
@@ -72,4 +72,4 @@ MIT
 [NPMURL]:                   https://npmjs.org/package/openspace "npm"
 [DependencyStatusURL]:      https://gemnasium.com/coderaiser/node-openspace "Dependency Status"
 [LicenseURL]:               https://tldrlegal.com/license/mit-license "MIT License"
-
+[BuildStatusURL]:           https://travis-ci.org/coderaiser/node-openspace  "Build Status"
