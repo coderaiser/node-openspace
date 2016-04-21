@@ -69,6 +69,7 @@ MIT
 [NPMIMGURL]:                https://img.shields.io/npm/v/openspace.svg?style=flat
 [DependencyStatusIMGURL]:   https://img.shields.io/gemnasium/coderaiser/node-openspace.svg?style=flat
 [LicenseIMGURL]:            https://img.shields.io/badge/license-MIT-317BF9.svg?style=flat
+[BuildStatusIMGURL]:        https://img.shields.io/travis/coderaiser/node-openspace/master.svg?style=flat
 [NPMURL]:                   https://npmjs.org/package/openspace "npm"
 [DependencyStatusURL]:      https://gemnasium.com/coderaiser/node-openspace "Dependency Status"
 [LicenseURL]:               https://tldrlegal.com/license/mit-license "MIT License"
