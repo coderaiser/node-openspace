@@ -35,7 +35,7 @@ test('openspace: open file that doesn\'t exist', (t) => {
         socket.on('connect', () => {
             socket.emit('open', 'hello world');
             socket.on('err', (error) => {
-                t.equal('Exited with code 2', error, 'should be open error');
+                t.ok(/^Exited with code/.test(error), 'should be open error');
                 t.end();
                 callback();
             });
