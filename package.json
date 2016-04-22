@@ -1,7 +1,7 @@
 {
   "name": "openspace",
   "version": "1.0.0",
-  "description": "pack and extract .tar.gz archives middleware",
+  "description": "open files, web sites, executables via web sockets",
   "main": "lib/server.js",
   "scripts": {
     "test": "tape test/**/*.js",
@@ -13,14 +13,10 @@
     "url": "git://github.com/coderaiser/node-openspace.git"
   },
   "keywords": [
-    "pack",
-    "extract",
-    "archive",
-    "tar",
-    "gzip",
-    "emitter",
+    "open",
     "file",
-    "middleware"
+    "socket",
+    "emitter"
   ],
   "author": "coderaiser <mnemonic.enemy@gmail.com> (http://coderaiser.github.io/)",
   "license": "MIT",
