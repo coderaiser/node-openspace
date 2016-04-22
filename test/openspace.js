@@ -29,16 +29,18 @@ let connect = (path, options, fn) => {
         let prefix = options.prefix || 'openspace';
         path = `${prefix}${!path ? '' : '/' + path}`;
     }
+    
+    let app = express();
+    let server = http.createServer(app);
+    
+    app.use(openspace(options));
+    openspace.listen(io(server), options);
+        
     freeport((error, port) => {
-        let app = express();
-        let server = http.createServer(app);
         let ip = '127.0.0.1';
         
         if (options && !Object.keys(options).length)
             options = undefined;
-        
-        app.use(openspace(options));
-        openspace.listen(io(server), options);
         
         server.listen(port, ip, () => {
             let url = `http://127.0.0.1:${port}/${path}`;
@@ -117,6 +119,63 @@ test('openspace: options: empty object', (t) => {
                 callback();
             });
         })
+    });
+});
+
+test('openspace: options: authCheck not function', (t) => {
+    let authCheck = {};
+    let fn = () => {
+        connect('/', {authCheck}, () => {
+        });
+    };
+    
+    t.throws(fn, /authCheck should be function!/, 'should throw when authCheck not function');
+    t.end();
+});
+
+test('openspace: options: authCheck: wrong credentials', (t) => {
+    let authCheck = (socket, fn) => {
+        socket.on('auth', (username, password) => {
+            if (username === 'hello' && password === 'world')
+                fn();
+            else
+                socket.emit('err', 'Wrong credentials');
+        })
+    };
+    
+    connect('/', {authCheck}, (socket, fn) => {
+        socket.emit('auth', 'jhon', 'lajoie');
+        
+        socket.on('err', (error) => {
+            t.equal(error, 'Wrong credentials', 'should return error');
+            t.end();
+            fn();
+        });
+    });
+});
+
+test('openspace: options: authCheck: correct credentials', (t) => {
+    let authCheck = (socket, fn) => {
+        socket.on('auth', (username, password) => {
+            if (username === 'hello' && password === 'world')
+                fn();
+            else
+                socket.emit('err', 'Wrong credentials');
+        })
+    };
+    
+    connect('/', {authCheck}, (socket, fn) => {
+        socket.emit('auth', 'hello', 'world');
+        
+        socket.on('connect', () => {
+            t.pass('should grant access');
+            t.end();
+            fn();
+        });
+        
+        socket.on('err', (error) => {
+            t.notOk(error, 'should not be error');
+        });
     });
 });
 
