@@ -1,52 +1,42 @@
-# Ishtar [![License][LicenseIMGURL]][LicenseURL] [![NPM version][NPMIMGURL]][NPMURL] [![Dependency Status][DependencyStatusIMGURL]][DependencyStatusURL]
+# Openspace [![License][LicenseIMGURL]][LicenseURL] [![NPM version][NPMIMGURL]][NPMURL] [![Dependency Status][DependencyStatusIMGURL]][DependencyStatusURL]
 
-pack and extract .tar.gz archives middleware based on [socket.io](http://socket.io "Socket.io") and [ishtar](https://github.com/coderaiser/node-jaguar "Jaguar").
+Open files, web sites, executables via web sockets middleware.
 
 ## Install
 
 ```
-npm i ishtar --save
+npm i openspace --save
 ```
 
 ## Client
 
-Could be loaded from url `/ishtar/ishtar.js`.
+Could be loaded from url `/openspace/openspace.js`.
 
 ```js
-var prefix = '/ishtar';
+var prefix = '/openspace';
 
 /* could be one argument: callback */
-ishtar(prefix, function(packer) {
-    var from        = '/',
-        to          = '/tmp',
-        names       = [
-            'bin'
-        ],
-        progress    = function(value) {
-            console.log('progress:', value);
-        },
-        
-        end     = function() {
+openspace(prefix, function(opener) {
+    var path = 'hello.js',
+        end  = function() {
             console.log('end');
-            packer.removeListener('progress', progress);
-            packer.removeListener('end', end);
+            opener.removeListener('progress', progress);
+            opener.removeListener('end', end);
         };
     
-    packer.pack(from, to, names);
+    opener.open(from, to, names);
     
-    packer.on('progress', progress);
-    packer.on('end', end);
-    packer.on('error', function(error) {
+    opener.on('end', end);
+    opener.on('error', function(error) {
         console.error(error.message);
     });
 });
-
 ```
 
 ## Server
 
 ```js
-var ishtar      = require('ishtar'),
+var openspace   = require('openspace'),
     http        = require('http'),
     express     = require('express'),
     io          = require('socket.io'),
@@ -57,14 +47,18 @@ var ishtar      = require('ishtar'),
     
 server.listen(port);
 
-app.use(ishtar({
+app.use(openspace({
     minify: true,
     online: true
 });
 
-ishtar.listen(socket, {
-    prefix: '/ishtar',   /* default              */
-    root: '/',          /* string or function   */
+openspace.listen(socket, {
+    prefix: '/openspace',   /* default              */
+    root: '/',              /* string or function   */
+    authCheck: (socket, ok) => { /* optional        */
+        /* auth check logic */
+        ok();
+    }
 });
 ```
 
@@ -72,10 +66,10 @@ ishtar.listen(socket, {
 
 MIT
 
-[NPMIMGURL]:                https://img.shields.io/npm/v/ishtar.svg?style=flat
-[DependencyStatusIMGURL]:   https://img.shields.io/gemnasium/coderaiser/node-ishtar.svg?style=flat
+[NPMIMGURL]:                https://img.shields.io/npm/v/openspace.svg?style=flat
+[DependencyStatusIMGURL]:   https://img.shields.io/gemnasium/coderaiser/node-openspace.svg?style=flat
 [LicenseIMGURL]:            https://img.shields.io/badge/license-MIT-317BF9.svg?style=flat
-[NPMURL]:                   https://npmjs.org/package/ishtar "npm"
-[DependencyStatusURL]:      https://gemnasium.com/coderaiser/node-ishtar "Dependency Status"
+[NPMURL]:                   https://npmjs.org/package/openspace "npm"
+[DependencyStatusURL]:      https://gemnasium.com/coderaiser/node-openspace "Dependency Status"
 [LicenseURL]:               https://tldrlegal.com/license/mit-license "MIT License"
 
