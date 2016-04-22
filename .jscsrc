@@ -1,0 +1,18 @@
+{
+    "preset": "crockford",
+    "requireSpaceAfterKeywords": false,
+    "requireCapitalizedConstructors": false,
+    "disallowTrailingWhitespace": "ignoreEmptyLines",
+    "disallowTrailingComma": false,
+    "validateIndentation": false,
+    "requireCurlyBraces": false,
+    "requireSpacesInAnonymousFunctionExpression": {
+        "beforeOpeningCurlyBrace": true
+    },
+    "disallowDanglingUnderscores": false,
+    "excludeFiles": [
+        "node_modules/**",
+        "modules/**",
+        "bower_components/**"
+    ]
+}
