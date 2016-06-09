@@ -1,6 +1,5 @@
 {
   "name": "openspace",
-  "version": "1.0.0",
   "homepage": "https://github.com/coderaiser/node-openspace",
   "authors": [
     "coderaiser <mnemonic.enemy@gmail.com>"
@@ -30,3 +29,4 @@
     "emitify": "^2.1.0"
   }
 }
+

@@ -1,0 +1,15 @@
+2016.06.09, v1.0.1
+
+feature:
+- (bower) emitify v2.1.0
+- (package) redrun v3.0.0
+- (npmignore) add
+- (package) add coverage
+- (travis) rm security
+- (package) add jshint, jscs, eslint
+- (openspace) add authCheck
+- (package) add description
+- (openspace) add path, options
+- (bower) ishtar -> openspace
+- (test) add
+
