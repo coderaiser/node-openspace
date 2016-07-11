@@ -47,7 +47,7 @@
     "jshint": "^2.9.2",
     "nodemon": "^1.9.1",
     "nyc": "^7.0.0",
-    "redrun": "^4.0.0",
+    "redrun": "^5.0.1",
     "socket.io": "^1.4.5",
     "socket.io-client": "^1.4.5",
     "tape": "^4.5.1"
