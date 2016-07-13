@@ -78,7 +78,7 @@ test('openspace: open file that exist', (t) => {
             });
             
             socket.on('err', (error) => {
-                t.notOk(error, 'should not be open error');
+                t.equal(error.message, 'Exited with code 3', 'A required tool could not be found');
                 t.end();
                 callback();
             });
