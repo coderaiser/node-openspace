@@ -1,57 +1,11 @@
 'use strict';
 
-let http = require('http');
-let path = require('path');
-let express = require('express');
-let test = require('tape');
-let freeport = require('freeport');
-let io = require('socket.io');
-let ioClient = require('socket.io-client');
-let openspace = require('..');
+const http = require('http');
+const path = require('path');
 
-let connect = (path, options, fn) => {
-    if (!path) {
-        throw Error('path could not be empty!');
-    } else if (!fn && !options) {
-        fn = path;
-        path = '';
-    } else if (!fn) {
-        fn = options;
-        options = null;
-    }
-    
-    path = path.replace(/^\/|\/$/g, '');
-    
-    if (!options || !options.prefix) {
-        path = 'openspace';
-    } else {
-        let prefix = options.prefix || 'openspace';
-        path = `${prefix}${!path ? '' : '/' + path}`;
-    }
-    
-    let app = express();
-    let server = http.createServer(app);
-    
-    app.use(openspace(options));
-    openspace.listen(io(server), options);
-        
-    freeport((error, port) => {
-        let ip = '127.0.0.1';
-        
-        if (options && !Object.keys(options).length)
-            options = undefined;
-        
-        server.listen(port, ip, () => {
-            let url = `http://127.0.0.1:${port}/${path}`;
-            let socket = ioClient(url);
-            
-            fn(socket, () => {
-                socket.destroy();
-                server.close();
-            });
-        });
-    });
-};
+const test = require('tape');
+const openspace = require('..');
+const connect = require('./connect')('openspace', openspace);
 
 test('openspace: open file that doesn\'t exist', (t) => {
     connect((socket, callback) => {
@@ -128,8 +82,8 @@ test('openspace: options: empty object', (t) => {
 });
 
 test('openspace: options: authCheck not function', (t) => {
-    let authCheck = {};
-    let fn = () => {
+    const authCheck = {};
+    const fn = () => {
         connect('/', {authCheck}, () => {
         });
     };
@@ -139,7 +93,7 @@ test('openspace: options: authCheck not function', (t) => {
 });
 
 test('openspace: options: authCheck: wrong credentials', (t) => {
-    let authCheck = (socket, fn) => {
+    const authCheck = (socket, fn) => {
         socket.on('auth', (username, password) => {
             if (username === 'hello' && password === 'world')
                 fn();
@@ -160,7 +114,7 @@ test('openspace: options: authCheck: wrong credentials', (t) => {
 });
 
 test('openspace: options: authCheck: correct credentials', (t) => {
-    let authCheck = (socket, fn) => {
+    const authCheck = (socket, fn) => {
         socket.on('auth', (username, password) => {
             if (username === 'hello' && password === 'world')
                 fn();
