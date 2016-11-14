@@ -13,21 +13,20 @@ npm i openspace --save
 Could be loaded from url `/openspace/openspace.js`.
 
 ```js
-var prefix = '/openspace';
+const prefix = '/openspace';
 
 /* could be one argument: callback */
 openspace(prefix, function(opener) {
-    var path = 'hello.js',
-        end  = function() {
-            console.log('end');
-            opener.removeListener('progress', progress);
-            opener.removeListener('end', end);
-        };
+    const path = 'hello.js';
+    const end  = () => {
+        console.log('end');
+        opener.removeListener('end', end);
+    };
     
     opener.open(from, to, names);
     
     opener.on('end', end);
-    opener.on('error', function(error) {
+    opener.on('error', (error) => {
         console.error(error.message);
     });
 });
@@ -36,15 +35,15 @@ openspace(prefix, function(opener) {
 ## Server
 
 ```js
-var openspace   = require('openspace'),
-    http        = require('http'),
-    express     = require('express'),
-    io          = require('socket.io'),
-    app         = express(),
-    port        = 1337,
-    server      = http.createServer(app),
-    socket      = io.listen(server);
-    
+const openspace = require('openspace');
+const http = require('http');
+const express = require('express');
+const io = require('socket.io');
+const app = express();
+const port = 1337;
+const server = http.createServer(app);
+const socket = io.listen(server);
+
 server.listen(port);
 
 app.use(openspace({
