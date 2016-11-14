@@ -20,21 +20,20 @@ test('openspace: open file that doesn\'t exist', (t) => {
 });
 
 test('openspace: open file that exist', (t) => {
-    connect((socket, callback) => {
+    connect((socket, end) => {
         socket.on('connect', () => {
             socket.emit('open', __filename);
             
             socket.on('end', () => {
                 t.pass('file opened');
                 t.end();
-                callback();
+                end();
             });
             
             socket.on('err', (error) => {
-                console.log(error);
-                t.equal('Exited with code 3', error.message, 'A required tool could not be found');
+                t.ok(/^Exited with code 3/.test(error), 'should be open error');
                 t.end();
-                callback();
+                end();
             });
         });
     });
