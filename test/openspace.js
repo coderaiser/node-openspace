@@ -51,27 +51,40 @@ test('openspace: options: prefix', (t) => {
 });
 
 test('openspace: options: root', (t) => {
-    connect('/', {root: __dirname}, (socket, callback) => {
+    connect('/', {root: __dirname}, (socket, end) => {
         socket.on('connect', () => {
             socket.emit('open', path.basename(__filename));
+            
+            socket.on('err', (e) => {
+                t.ok(/^Exited with code 3/.test(e), 'can be open error');
+                t.end();
+                end();
+            });
             
             socket.on('end', () => {
                 t.pass('file opened');
                 t.end();
-                callback();
+                end();
             });
         });
     });
 });
 
 test('openspace: options: empty object', (t) => {
-    connect('/', {}, (socket, callback) => {
+    connect('/', {}, (socket, end) => {
         socket.on('connect', () => {
             socket.emit('open', __filename);
+            
+            socket.on('err', (e) => {
+                t.ok(/^Exited with code 3/.test(e), 'can be open error');
+                t.end();
+                end();
+            });
+            
             socket.on('end', () => {
                 t.pass('file opened');
                 t.end();
-                callback();
+                end();
             });
         });
     });
