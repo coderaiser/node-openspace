@@ -40,15 +40,12 @@ test('openspace: open file that exist', (t) => {
 });
 
 test('openspace: options: prefix', (t) => {
-    connect('/', {prefix: 'hello'}, (socket, callback) => {
+    const prefix = 'hello';
+    connect('/', {prefix}, (socket, end) => {
         socket.on('connect', () => {
-            socket.emit('open', __filename);
-            
-            socket.on('end', () => {
-                t.pass('file opened');
-                t.end();
-                callback();
-            });
+            t.pass('connected with prefix');
+            t.end();
+            end();
         });
     });
 });
