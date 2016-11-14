@@ -31,7 +31,8 @@ test('openspace: open file that exist', (t) => {
             });
             
             socket.on('err', (error) => {
-                t.equal(error.message, 'Exited with code 3', 'A required tool could not be found');
+                console.log(error);
+                t.equal('Exited with code 3', error.message, 'A required tool could not be found');
                 t.end();
                 callback();
             });
