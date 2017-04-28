@@ -1,6 +1,5 @@
 {
   "name": "emitify",
-  "version": "2.1.0",
   "homepage": "https://github.com/coderaiser/emitify",
   "authors": [
     "coderaiser <mnemonic.enemy@gmail.com>"
@@ -20,7 +19,7 @@
     "**/.*",
     "node_modules",
     "bower_components",
-    "test",
-    "tests"
+    "lib",
+    "test"
   ]
 }
