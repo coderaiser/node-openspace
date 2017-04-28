@@ -1,3 +1,22 @@
+2017.04.28, v1.0.2
+
+fix:
+- test(openspace) prefix
+
+feature:
+- (bower) emitify v3.0.1
+- (package) nyc v10.0.0
+- (package) nyc v9.0.1
+- (jscsrc) add requireMultipleVarDec
+- (openspace) rm freeport
+- (travis) node_js: v6, v7
+- (package) nyc v8.1.0
+- (package) redrun v5.0.0
+- (package) nyc v7.0.0
+- (package) eslint v3.0.0
+- (package) redrun v4.0.0
+
+
 2016.06.09, v1.0.1
 
 feature:
