@@ -32,6 +32,9 @@
     "url": "https://github.com/coderaiser/node-openspace/issues"
   },
   "homepage": "https://github.com/coderaiser/node-openspace",
+  "engines": {
+    "node": ">=4.0.0"
+  },
   "dependencies": {
     "emitify": "^3.0.0",
     "join-io": "~1.4.0",
