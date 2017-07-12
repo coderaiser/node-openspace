@@ -37,7 +37,7 @@
     "join-io": "~1.4.0",
     "mellow": "~2.0.0",
     "mollify": "~1.0.4",
-    "opn": "~4.0.1"
+    "opn": "^5.1.0"
   },
   "devDependencies": {
     "coveralls": "^2.11.9",
