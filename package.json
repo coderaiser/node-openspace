@@ -37,7 +37,7 @@
   },
   "dependencies": {
     "emitify": "^3.0.0",
-    "join-io": "~1.4.0",
+    "join-io": "^2.0.0",
     "mellow": "~2.0.0",
     "opn": "^5.1.0"
   },
