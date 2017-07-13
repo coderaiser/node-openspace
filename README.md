@@ -47,7 +47,6 @@ const socket = io.listen(server);
 server.listen(port);
 
 app.use(openspace({
-    minify: true,
     online: true
 });
 
