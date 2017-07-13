@@ -1,3 +1,10 @@
+2017.07.13, v2.0.1
+
+feature:
+- (package) join-io v2.0.0
+- (openspace) rm unused minify
+
+
 2017.07.12, v2.0.0
 
 feature:
