@@ -1,6 +1,6 @@
 {
   "name": "openspace",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "open files, web sites, executables via web sockets",
   "main": "lib/server.js",
   "scripts": {
