@@ -42,7 +42,7 @@
     "opn": "^5.1.0"
   },
   "devDependencies": {
-    "coveralls": "^2.11.9",
+    "coveralls": "^3.0.0",
     "eslint": "^4.0.0",
     "express": "^4.13.4",
     "jscs": "^3.0.3",
